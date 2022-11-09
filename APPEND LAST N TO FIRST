@@ -1,0 +1,63 @@
+int length(Node *head){
+ 
+   if(!head) return 0;
+
+   return 1+length(head->next);
+
+}
+ 
+
+
+Node *appendLastNToFirst(Node *head, int n) {
+ 
+//CALCULATION OF TOTAL LENGTH
+
+    if(!head) return NULL;
+
+      if(n==0) return head;
+
+
+  int  totalLength=length(head);
+
+   
+
+    int target=(totalLength-n);
+
+      Node *temp=head;
+
+    for(int i=0;i<target-1;i++){
+        temp=temp->next;
+    }
+
+
+    // CHECK WHERE IS MY TEMP NOW
+
+    // cout<<temp->data<<endl;
+ 
+     Node *last=temp;
+
+     while(last->next!=NULL){
+         last=last->next;
+     }
+
+//CHECK WHERE IS MY LAST NOW
+
+    //   cout<<last->data<<endl;
+
+//MAKING HEAD START OF NEW LL
+
+      Node *newHaed=temp->next;
+
+//BREAK THE LINKED LIST
+
+     temp->next=NULL;
+
+//UPDATE THE LAST OF LINKED LIST
+
+      last->next=head;
+
+//RETURN NEW HEAD MAKED
+
+return newHaed;
+
+}
