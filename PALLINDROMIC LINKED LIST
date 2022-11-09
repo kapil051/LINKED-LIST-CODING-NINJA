@@ -1,0 +1,57 @@
+Node *reverse(Node *head){
+  
+   if(!head) return NULL;
+
+   if(!head->next) return head;
+   
+   Node *revHead=reverse(head->next);
+
+      Node *temp=head->next;
+
+	     temp->next=head;
+
+	      head->next=NULL;
+   
+       return revHead;
+
+}
+
+
+
+Node* findMid(Node *head){
+ 
+   Node *slow=head;
+   Node *fast=head;
+
+   while(fast->next!=NULL&&fast->next->next!=NULL){
+	   slow=slow->next;
+	   fast=fast->next->next;
+   }
+   
+    return slow;
+
+}
+
+
+bool isPalindrome(Node *head)
+{
+
+	if(!head) return true;
+
+    
+	  Node *mid=findMid(head);
+
+    //    cout<<mid->data<<endl;
+ 
+      Node *newHead=reverse(mid->next);
+     
+	 while(newHead!=NULL){
+
+         if(head->data!=newHead->data) return false;
+   
+        head=head->next;
+        newHead=newHead->next;
+	 }
+
+	return true;
+}
