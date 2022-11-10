@@ -1,0 +1,27 @@
+Node *reverseLinkedList(Node *head) {
+
+    if(head==NULL||head->next==NULL){
+        return head;
+    }
+
+    Node *p=NULL;
+    Node *c=head;
+    Node *n=head->next;
+    
+    while(1){
+
+    c->next=p;
+        p=c;
+        c=n;
+
+        if(c==NULL){
+           break; 
+        }
+
+    n=n->next;
+    }
+    
+    
+    return p;
+    
+}
