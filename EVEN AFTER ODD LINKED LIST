@@ -1,0 +1,63 @@
+Node *evenAfterOdd(Node *head)
+{
+	
+  if(!head) return NULL;
+
+    Node *evenHead=NULL;
+	Node *evenTail=NULL;
+	Node *oddHead=NULL;
+	Node *oddTail=NULL;
+
+
+	   while(head!=NULL){
+
+          if(head->data%2==0){
+
+                 if(evenHead==NULL){
+                    evenHead=head;
+				    evenTail=head;
+				 }
+				 
+				 else{
+                   evenTail->next=head;
+                   evenTail=head;
+				 }
+
+
+		  }
+
+		  else{
+
+
+                if(oddHead==NULL){
+                   oddHead=head;
+                   oddTail=head;
+				 }
+				 
+				 else{
+                   oddTail->next=head;
+                   oddTail=head;
+					 
+				 }
+
+		  }
+       head=head->next;
+}
+
+   if(evenHead==NULL) {
+	    oddTail->next=NULL;
+	    return oddHead;
+   }
+
+   if(oddHead==NULL){
+     	evenTail->next=NULL;
+       return evenHead;
+   }  
+
+  
+
+           oddTail->next=evenHead;
+             evenTail->next=NULL;
+			 
+           return oddHead;
+}
